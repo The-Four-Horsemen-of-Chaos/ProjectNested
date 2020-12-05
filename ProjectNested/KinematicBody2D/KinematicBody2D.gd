@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
 export (int) var speed = 200
-
+export var gravity = 33;
+export var maxGravity = 500
+export var jumpSpeed = -700.0
 
 var velocity = Vector2()
 
@@ -18,4 +20,5 @@ func get_input():
 
 func _physics_process(delta):
 	get_input()
-	velocity = move_and_slide(velocity)
+	move_and_slide(velocity, Vector2.UP, false, 4, 0.785398, false)
+	
