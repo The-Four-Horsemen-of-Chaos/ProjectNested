@@ -13,7 +13,7 @@ var touching_player = false
 var freak_out = false
 var attacking = false
 onready var player = get_tree().get_root().get_node("Node2D").get_node("player")
-
+onready var sfx = get_tree().get_root().get_node("Node2D").get_node("Control").get_node("SFX")
 # Called when the node enters the scene tree for the first time.
 func getDir():
 	match(direction):
@@ -69,6 +69,7 @@ func attack():
 
 func lose_health():
 	if (!freak_out):
+		sfx.play_sfx("Ant_Freak_Out")
 		freak_out = true;
 		
 		hp -= 1;

@@ -15,6 +15,10 @@ var last_wall_direction = 0;
 
 onready var left_wall_raycasts = $WallRaycasts/LeftWallRaycasts
 onready var right_wall_raycasts = $WallRaycasts/RightWallRaycasts
+onready var sfx = get_tree().get_root().get_node("Node2D").get_node("Control").get_node("SFX")
+
+func get_hp():
+	return hp;
 
 func _ready():
 	hp = startHP
@@ -37,6 +41,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("up"):
 			velocity.y = jump_speed
 			animation_play("jump")
+			sfx.play_sfx("Jump")
 		else:
 			if (abs(velocity.x) > 0.25):
 				animation_play("walk")
@@ -53,14 +58,17 @@ func _physics_process(delta):
 		print("r" + str(right))
 		print("l" + str(left))
 		if (right || left):
+			sfx.play_sfx("Jump")
 			print("WALL JUMP")
 			velocity.y = jump_speed
 			last_wall_direction = 0;
 			
 		
 	if Input.is_action_just_pressed("attack"):
-		animation_play("attack")
-		isAttacking = true;
+		if (!isAttacking):
+			sfx.play_sfx("Laser_Shoot")
+			animation_play("attack")
+			isAttacking = true;
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
@@ -72,6 +80,7 @@ func lose_hp():
 	if (!hpCooldown):
 		hpCooldown = true;
 		hp -= 1;
+		sfx.play_sfx("Hit_Hurt")
 		if (hp <= 0):
 			game_over();
 			
