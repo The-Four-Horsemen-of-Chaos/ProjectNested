@@ -13,7 +13,7 @@ var touching_player = false
 var freak_out = false
 var attacking = false
 onready var player = get_tree().get_root().get_node("Node2D").get_node("player")
-
+onready var sfx = get_tree().get_root().get_node("Node2D").get_node("Control").get_node("SFX")
 # Called when the node enters the scene tree for the first time.
 func getDir():
 	match(direction):
@@ -29,6 +29,19 @@ func setDir(value):
 func _ready():
 	position.x = minX;
 	hp = startHP
+
+func process(delta):
+	if (freak_out):
+		$AnimatedSprite.speed_scale = 2
+	else:
+		$AnimatedSprite.speed_scale = 1
+	
+	if (direction == 0):
+		$AnimatedSprite.play("idle")
+	else:
+		$AnimatedSprite.flip_h = direction < 0
+		$AnimatedSprite.play("walk")
+		
 	
 func _physics_process(delta):
 	if (position.x < minX):
@@ -38,6 +51,7 @@ func _physics_process(delta):
 	var velocity = Vector2(speed * direction * delta, 0);
 	if (freak_out):
 		velocity.x *= freak_out_speed_multiplier;
+	
 	position += velocity;
 	
 	if (touching_player && player.get_is_attacking()):
@@ -69,6 +83,7 @@ func attack():
 
 func lose_health():
 	if (!freak_out):
+		sfx.play_sfx("Ant_Freak_Out")
 		freak_out = true;
 		
 		hp -= 1;
@@ -81,3 +96,11 @@ func lose_health():
 
 func die():
 	queue_free();
+	
+
+
+
+func _on_AnimatedSprite_animation_finished():
+	#if (direction != 0):
+		#$AnimatedSprite.play("walk")
+	pass

@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://KinematicBody2D/KinematicBody2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Enemy/BasicEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/DreamCatcher.gd" type="Script" id=4]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=5]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1048.97, 73.9048 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 169.554, 619.25 )
 
 [node name="Node2D" type="Node2D"]
@@ -25,7 +27,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -9.52441, -9.52441 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 1015.21, 1084.71 )
@@ -37,7 +39,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2( 717.505, -457.171 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2( 440.569, 564.04 )
@@ -49,8 +51,15 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2( 717.505, -457.171 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Area2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 831.673, 947.037 )
 maxX = 900
+
+[node name="DreamCatcher" type="Sprite" parent="."]
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Control" parent="." instance=ExtResource( 5 )]
