@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=2]
+
+[ext_resource path="res://Assets/PlayerAttack/tile003.png" type="Texture" id=1]
+[ext_resource path="res://Assets/PlayerAttack/tile000.png" type="Texture" id=2]
+[ext_resource path="res://Assets/PlayerAttack/tile001.png" type="Texture" id=3]
+[ext_resource path="res://Assets/PlayerAttack/tile004.png" type="Texture" id=4]
+[ext_resource path="res://Assets/PlayerAttack/tile002.png" type="Texture" id=5]
+[ext_resource path="res://Assets/PlayerWalk/tile004.png" type="Texture" id=6]
+[ext_resource path="res://Assets/PlayerWalk/tile002.png" type="Texture" id=7]
+[ext_resource path="res://Assets/PlayerWalk/tile006.png" type="Texture" id=8]
+[ext_resource path="res://Assets/PlayerWalk/tile007.png" type="Texture" id=9]
+[ext_resource path="res://Assets/PlayerWalk/tile000.png" type="Texture" id=10]
+[ext_resource path="res://Assets/PlayerWalk/tile003.png" type="Texture" id=11]
+[ext_resource path="res://Assets/PlayerWalk/tile001.png" type="Texture" id=12]
+[ext_resource path="res://Assets/PlayerWalk/tile005.png" type="Texture" id=13]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk",
+"speed": 7.0
+} ]
