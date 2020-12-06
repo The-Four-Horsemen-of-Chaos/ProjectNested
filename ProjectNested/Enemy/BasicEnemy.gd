@@ -30,7 +30,7 @@ func _ready():
 	position.x = minX;
 	hp = startHP
 
-func process(delta):
+func _process(delta):
 	if (freak_out):
 		$AnimatedSprite.speed_scale = 2
 	else:
@@ -56,10 +56,6 @@ func _physics_process(delta):
 	
 	if (touching_player && player.get_is_attacking()):
 		lose_health()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_Area2D_body_entered(body):
 	if (body.name == "player"):

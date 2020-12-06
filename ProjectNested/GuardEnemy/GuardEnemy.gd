@@ -10,7 +10,7 @@ export var maxX = 200;
 var direction = 1;
 export var speed = 200;
 
-onready var player = get_node("player");
+onready var player = get_tree().get_root().get_node("Node2D").get_node("player")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +20,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if (!is_player_visible()):
+		$AnimatedSprite.play("idle")
+	else:
+		$AnimatedSprite.flip_h = direction < 0
+		$AnimatedSprite.play("walk")
 
 func _physics_process(delta):
 	if (is_player_visible()): # LATER IMPLEMENT PLAYER PHEREMONES
@@ -48,3 +52,7 @@ func is_player_visible():
 func _on_DirectionTimer_timeout():
 	if (not is_player_visible()):
 		direction *= -1;
+
+
+func _on_Guardiant_body_entered(body):
+	body.game_over()
