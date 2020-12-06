@@ -8,7 +8,7 @@
 radius = 32.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1071.37, 73.9048 )
+extents = Vector2( 1048.97, 73.9048 )
 
 [node name="tutorial" type="Node2D"]
 position = Vector2( 363.441, 467.818 )
