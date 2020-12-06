@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 export (int) var speed = 300
 export (int) var jump_speed = -300

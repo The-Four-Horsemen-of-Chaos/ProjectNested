@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://ProjectNested/Camera2D.gd" type="Script" id=1]
+[ext_resource path="res://Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Sprite.gd" type="Script" id=2]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
-[ext_resource path="res://ProjectNested/KinematicBody2D.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -18,11 +17,10 @@ extents = Vector2( 115.567, 225.562 )
 [node name="scene" type="Node2D"]
 visible = false
 position = Vector2( 462.558, 296.563 )
-script = ExtResource( 3 )
 
 [node name="player" type="KinematicBody2D" parent="."]
 position = Vector2( 6.34964, -3.05176e-05 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="charicter" type="Sprite" parent="player"]
 texture = ExtResource( 5 )
