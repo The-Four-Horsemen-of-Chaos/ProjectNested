@@ -28,6 +28,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+margin_left = 22.0
+margin_top = 25.0
+margin_right = 176.0
+margin_bottom = 184.0
+text = "1"
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = -7.14328
+margin_top = -3.96851
+margin_right = 202.857
+margin_bottom = 172.031
+rect_scale = Vector2( 2, 1 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "1"
+align = 1
+
 [node name="SFX" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
